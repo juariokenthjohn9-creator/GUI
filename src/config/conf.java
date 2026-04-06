@@ -174,6 +174,37 @@ public void deleteRecord(String sql) {
   public Connection getConnection() {
     return connectDB();
 }
+
+    public void insertData(String sql){
+    try{
+        Connection conn = connectDB();
+        Statement stmt = conn.createStatement();
+        stmt.executeUpdate(sql);
+        stmt.close();
+        conn.close();
+    }catch(Exception e){
+        System.out.println("Insert Error: "+e.getMessage());
+    }
+}
+
+   public void updateRecord(String sql, Object... params) {
+    try {
+        PreparedStatement pst = getConnection().prepareStatement(sql);
+
+        for (int i = 0; i < params.length; i++) {
+            pst.setObject(i + 1, params[i]);
+        }
+
+        pst.executeUpdate();
+
+    } catch (Exception e) {
+        System.out.println("Update Error: " + e.getMessage());
+    }
+}
+
+  
+
+    
   
   
 }

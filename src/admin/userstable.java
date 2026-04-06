@@ -8,6 +8,7 @@ package admin;
 import config.conf;
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import masterlist.servicemasterlist;
 
 /**
  *
@@ -47,6 +48,7 @@ public final class userstable extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         headeruser = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -55,15 +57,8 @@ public final class userstable extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         usertable = new javax.swing.JTable();
-        dashpanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        userpanel = new javax.swing.JPanel();
-        userstable = new javax.swing.JLabel();
-        bookspanel = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        transactionpanel = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         header.setBackground(new java.awt.Color(0, 204, 0));
         header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -76,21 +71,24 @@ public final class userstable extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        headeruser.setBackground(new java.awt.Color(0, 102, 102));
+        headeruser.setBackground(new java.awt.Color(153, 153, 153));
         headeruser.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("USERS");
-        headeruser.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 360, 30));
+        headeruser.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 360, 30));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Pictures\\final logo.jpg")); // NOI18N
+        headeruser.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 720, 90));
 
         getContentPane().add(headeruser);
-        headeruser.setBounds(0, 0, 720, 60);
+        headeruser.setBounds(0, 0, 720, 90);
 
-        jPanel1.setBackground(new java.awt.Color(0, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2.setBackground(new java.awt.Color(102, 102, 255));
+        jButton2.setBackground(new java.awt.Color(153, 153, 153));
         jButton2.setText("SEARCH");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,7 +97,7 @@ public final class userstable extends javax.swing.JFrame {
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 70, 80, 40));
 
-        jButton3.setBackground(new java.awt.Color(102, 102, 255));
+        jButton3.setBackground(new java.awt.Color(153, 153, 153));
         jButton3.setText("ADD");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,7 +106,7 @@ public final class userstable extends javax.swing.JFrame {
         });
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 60, 40));
 
-        jButton4.setBackground(new java.awt.Color(102, 102, 255));
+        jButton4.setBackground(new java.awt.Color(153, 153, 153));
         jButton4.setText("UPDATE");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,7 +122,7 @@ public final class userstable extends javax.swing.JFrame {
         });
         jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 220, 40));
 
-        jButton5.setBackground(new java.awt.Color(102, 102, 255));
+        jButton5.setBackground(new java.awt.Color(153, 153, 153));
         jButton5.setText("DELETE");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,143 +139,41 @@ public final class userstable extends javax.swing.JFrame {
 
             }
         ));
+        usertable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                usertableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(usertable);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 580, 240));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 580, 210));
 
-        dashpanel.setBackground(new java.awt.Color(204, 204, 204));
-        dashpanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                dashpanelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                dashpanelMouseExited(evt);
-            }
-        });
-        dashpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("DASHBOARD");
-        dashpanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 28));
-
-        jPanel1.add(dashpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 130, 40));
-
-        userpanel.setBackground(new java.awt.Color(204, 204, 204));
-        userpanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                userpanelMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                userpanelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                userpanelMouseExited(evt);
-            }
-        });
-        userpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        userstable.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        userstable.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        userstable.setText("USER");
-        userpanel.add(userstable, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 28));
-
-        jPanel1.add(userpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 70, 40));
-
-        bookspanel.setBackground(new java.awt.Color(204, 204, 204));
-        bookspanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                bookspanelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                bookspanelMouseExited(evt);
-            }
-        });
-        bookspanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("BARBER");
-        bookspanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 90, 40));
-
-        jPanel1.add(bookspanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 120, 40));
-
-        transactionpanel.setBackground(new java.awt.Color(204, 204, 204));
-        transactionpanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                transactionpanelMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                transactionpanelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                transactionpanelMouseExited(evt);
-            }
-        });
-        transactionpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel4.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("PAYMENT TRANSACTION");
-        transactionpanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 8, 210, 20));
-
-        jPanel1.add(transactionpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 210, 40));
-
+        jButton1.setBackground(new java.awt.Color(153, 153, 153));
         jButton1.setText("BACK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        jButton6.setBackground(new java.awt.Color(153, 153, 153));
+        jButton6.setText("SERVICE");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 90, 40));
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 60, 720, 360);
+        jPanel1.setBounds(0, 90, 720, 330);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void dashpanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashpanelMouseEntered
-        dashpanel.setBackground(bodycolor);
-    }//GEN-LAST:event_dashpanelMouseEntered
-
-    private void dashpanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashpanelMouseExited
-        dashpanel.setBackground(navcolor);
-    }//GEN-LAST:event_dashpanelMouseExited
-
-    private void userpanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userpanelMouseClicked
-        admindashboard us = new admindashboard();
-        usertable.add(us).setVisible(true);
-    }//GEN-LAST:event_userpanelMouseClicked
-
-    private void userpanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userpanelMouseEntered
-        userpanel.setBackground(bodycolor);
-    }//GEN-LAST:event_userpanelMouseEntered
-
-    private void userpanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userpanelMouseExited
-        userpanel.setBackground(navcolor);
-    }//GEN-LAST:event_userpanelMouseExited
-
-    private void bookspanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookspanelMouseEntered
-        bookspanel.setBackground(bodycolor);
-    }//GEN-LAST:event_bookspanelMouseEntered
-
-    private void bookspanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookspanelMouseExited
-        bookspanel.setBackground(navcolor);
-    }//GEN-LAST:event_bookspanelMouseExited
-
-    private void transactionpanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transactionpanelMouseEntered
-        transaction tr = new transaction();
-    tr.setVisible(true);
-    this.dispose();
-    }//GEN-LAST:event_transactionpanelMouseEntered
-
-    private void transactionpanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transactionpanelMouseExited
-        transactionpanel.setBackground(navcolor);
-    }//GEN-LAST:event_transactionpanelMouseExited
-
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-     String keyword = jTextField1.getText();
+         String keyword = jTextField1.getText();
 
     if(keyword.isEmpty()){
         displayUsers();
@@ -285,7 +181,6 @@ public final class userstable extends javax.swing.JFrame {
     }
 
     try {
-
         conf con = new conf();
 
         String sql = "SELECT * FROM tbl_acc WHERE "
@@ -307,7 +202,7 @@ public final class userstable extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-      int rowIndex = usertable.getSelectedRow();
+       int rowIndex = usertable.getSelectedRow();
 
     if (rowIndex < 0) {
         JOptionPane.showMessageDialog(null, "Please select a user to update!");
@@ -320,38 +215,13 @@ public final class userstable extends javax.swing.JFrame {
     String type = usertable.getValueAt(rowIndex, 4).toString();
     String status = usertable.getValueAt(rowIndex, 5).toString();
 
-    updateUser up = new updateUser(id, name, email, type, status);
-    up.setVisible(true);
-    this.dispose(); 
+    new updateUser(id, name, email, type, status).setVisible(true);
+    this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       try {
-
-        String name = JOptionPane.showInputDialog("Enter Name:");
-        String email = JOptionPane.showInputDialog("Enter Email:");
-        String pass = JOptionPane.showInputDialog("Enter Password:");
-        String type = JOptionPane.showInputDialog("Enter Type (ADMIN/USER):");
-        String status = JOptionPane.showInputDialog("Enter Status:");
-
-        if(name == null || email == null || pass == null){
-            JOptionPane.showMessageDialog(null, "Cancelled!");
-            return;
-        }
-
-        conf con = new conf();
-
-        String sql = "INSERT INTO tbl_acc (name,email,pass,type,status) VALUES (?,?,?,?,?)";
-
-        con.addRecord(sql, name, email, pass, type, status);
-
-        JOptionPane.showMessageDialog(null, "User Added Successfully!");
-
-        displayUsers(); // refresh table
-
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
-    }
+       new updateUser().setVisible(true); // ADD mode
+    this.dispose();
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -391,10 +261,6 @@ if (confirm == JOptionPane.YES_OPTION) {
 }
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void transactionpanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transactionpanelMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_transactionpanelMouseClicked
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
          // Buksan ang admin dashboard
     admindashboard dash = new admindashboard();
@@ -403,6 +269,16 @@ if (confirm == JOptionPane.YES_OPTION) {
     // Isara ang current window
     this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        servicemasterlist sm = new servicemasterlist();
+        sm.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void usertableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usertableMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usertableMouseClicked
 
     /**
      * @param args the command line arguments
@@ -440,8 +316,6 @@ if (confirm == JOptionPane.YES_OPTION) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel bookspanel;
-    private javax.swing.JPanel dashpanel;
     private javax.swing.JPanel header;
     private javax.swing.JPanel headeruser;
     private javax.swing.JButton jButton1;
@@ -449,17 +323,13 @@ if (confirm == JOptionPane.YES_OPTION) {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JPanel transactionpanel;
-    private javax.swing.JPanel userpanel;
-    private javax.swing.JLabel userstable;
     private javax.swing.JTable usertable;
     // End of variables declaration//GEN-END:variables
 }
