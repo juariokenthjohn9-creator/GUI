@@ -3,18 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Admin/Desktop/GUI/src/masterlist/servicemasterlist.java</file>
-            <file>file:/C:/Users/Admin/Desktop/GUI/src/admin/transaction.java</file>
-            <file>file:/C:/Users/Admin/Desktop/GUI/src/main/login.java</file>
-            <file>file:/C:/Users/Admin/Desktop/GUI/src/admin/updateUser.java</file>
-            <file>file:/C:/Users/Admin/Desktop/GUI/src/main/register.java</file>
-            <file>file:/C:/Users/Admin/Desktop/GUI/src/admin/admindashboard.java</file>
-            <file>file:/C:/Users/Admin/Desktop/GUI/src/masterlist/barbersdashboard.java</file>
-            <file>file:/C:/Users/Admin/Desktop/GUI/src/admin/userstable.java</file>
-            <file>file:/C:/Users/Admin/Desktop/GUI/src/admin/barbers.java</file>
-            <file>file:/C:/Users/Admin/Desktop/GUI/src/admin/userForm.java</file>
-            <file>file:/C:/Users/Admin/Desktop/GUI/src/main/landing.java</file>
-            <file>file:/C:/Users/Admin/Desktop/GUI/src/admin/masterlist.java</file>
+            <file>file:/C:/Users/USER31/Desktop/GUI/src/user/receipts.java</file>
+            <file>file:/C:/Users/USER31/Desktop/GUI/src/admin/userForm.java</file>
+            <file>file:/C:/Users/USER31/Desktop/GUI/src/admin/barbers.java</file>
+            <file>file:/C:/Users/USER31/Desktop/GUI/src/admin/admindashboard.java</file>
+            <file>file:/C:/Users/USER31/Desktop/GUI/src/admin/transaction.java</file>
+            <file>file:/C:/Users/USER31/Desktop/GUI/src/admin/updateUser.java</file>
+            <file>file:/C:/Users/USER31/Desktop/GUI/src/admin/userstable.java</file>
+            <file>file:/C:/Users/USER31/Desktop/GUI/src/admin/masterlist.java</file>
+            <file>file:/C:/Users/USER31/Desktop/GUI/src/config/conf.java</file>
+            <file>file:/C:/Users/USER31/Desktop/GUI/src/masterlist/barbersdashboard.java</file>
+            <file>file:/C:/Users/USER31/Desktop/GUI/src/masterlist/servicemasterlist.java</file>
         </group>
     </open-files>
 </project-private>

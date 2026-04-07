@@ -12,6 +12,7 @@ import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
 import main.login;
 import masterlist.servicemasterlist;
+import masterlist.barbersdashboard;
 /**
  *
  * @author USER34
@@ -88,6 +89,9 @@ public class admindashboard extends javax.swing.JFrame {
 
         dashpanel.setBackground(new java.awt.Color(204, 204, 204));
         dashpanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dashpanelMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 dashpanelMouseEntered(evt);
             }
@@ -201,7 +205,7 @@ public class admindashboard extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        maindesktop.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+        maindesktop.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 113, 70, 40));
 
         jButton2.setBackground(new java.awt.Color(153, 153, 153));
         jButton2.setText("ADD");
@@ -210,7 +214,7 @@ public class admindashboard extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        maindesktop.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
+        maindesktop.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 70, 40));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -222,7 +226,7 @@ public class admindashboard extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable1);
 
-        maindesktop.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 670, 320));
+        maindesktop.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 650, 320));
 
         jButton3.setBackground(new java.awt.Color(153, 153, 153));
         jButton3.setText("DELETE");
@@ -231,7 +235,7 @@ public class admindashboard extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        maindesktop.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 70, -1));
+        maindesktop.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 70, 40));
 
         jButton4.setBackground(new java.awt.Color(153, 153, 153));
         jButton4.setText("SERVICE");
@@ -249,7 +253,7 @@ public class admindashboard extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        maindesktop.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, -1, -1));
+        maindesktop.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, -1, 40));
 
         jPanel2.add(maindesktop);
         maindesktop.setBounds(0, 60, 740, 410);
@@ -320,6 +324,7 @@ public class admindashboard extends javax.swing.JFrame {
 
     private void dashpanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashpanelMouseEntered
         dashpanel.setBackground(bodycolor);
+        
     }//GEN-LAST:event_dashpanelMouseEntered
 
     private void transactionpanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transactionpanelMouseClicked
@@ -430,6 +435,12 @@ this.dispose();
     b.setVisible(true);
     this.dispose();
     }//GEN-LAST:event_bookspanelMouseClicked
+
+    private void dashpanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashpanelMouseClicked
+       barbersdashboard bd = new barbersdashboard();
+    bd.setVisible(true);
+    this.dispose();
+    }//GEN-LAST:event_dashpanelMouseClicked
 
     /**
      */

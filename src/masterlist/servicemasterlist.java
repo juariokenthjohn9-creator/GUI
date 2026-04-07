@@ -11,6 +11,7 @@ import config.conf;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import user.receipts;
 
 /**
  *
@@ -68,6 +69,7 @@ public void loadData() {
         jButton5 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,7 +86,7 @@ public void loadData() {
         ));
         jScrollPane2.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 640, 320));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 620, 320));
 
         jButton1.setBackground(new java.awt.Color(153, 153, 153));
         jButton1.setText("service name");
@@ -93,7 +95,7 @@ public void loadData() {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 140, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 140, -1));
 
         jButton2.setBackground(new java.awt.Color(153, 153, 153));
         jButton2.setText("add");
@@ -102,7 +104,7 @@ public void loadData() {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, -1, -1));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, -1, -1));
 
         jButton3.setBackground(new java.awt.Color(153, 153, 153));
         jButton3.setText("edit");
@@ -111,7 +113,7 @@ public void loadData() {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, -1, -1));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, -1, -1));
 
         jButton4.setBackground(new java.awt.Color(153, 153, 153));
         jButton4.setText("delete");
@@ -120,7 +122,7 @@ public void loadData() {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, -1, -1));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, -1, -1));
 
         jButton5.setBackground(new java.awt.Color(153, 153, 153));
         jButton5.setText("back");
@@ -136,10 +138,16 @@ public void loadData() {
                 jTextField1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, 150, 20));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, 150, 20));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 640, 440));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Pictures\\final logo.jpg")); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 680, 440));
+        jButton6.setText("RECIEPTS");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -302,6 +310,12 @@ public void loadData() {
     }    
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        receipts r = new receipts(); // open receipts form
+    r.setVisible(true);
+    this.dispose(); // close current form
+    }//GEN-LAST:event_jButton6ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -343,6 +357,7 @@ public void loadData() {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;

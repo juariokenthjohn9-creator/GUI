@@ -5,18 +5,55 @@
  */
 package user;
 
+import masterlist.servicemasterlist;
+
 /**
  *
  * @author Admin
  */
+
+
+
+import masterlist.servicemasterlist;
+
 public class receipts extends javax.swing.JFrame {
+
+    public receipts() {
+        initComponents();
+        loadReceipts(); // tawagin dito
+    }
+
+    // ✅ ILAGAY DITO (inside class)
+    public void loadReceipts() {
+        try {
+            config.conf c = new config.conf();
+            java.sql.ResultSet rs = c.masterlist("SELECT * FROM services");
+
+            javax.swing.table.DefaultTableModel model =
+                (javax.swing.table.DefaultTableModel) jTable1.getModel();
+
+            model.setRowCount(0);
+
+            while (rs.next()) {
+                model.addRow(new Object[]{
+                    rs.getInt("id"),
+                    rs.getString("service_name"),
+                    rs.getDouble("price"),
+                    rs.getString("description")
+                });
+            }
+
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+        }
+    }
+
+
 
     /**
      * Creates new form receipts
      */
-    public receipts() {
-        initComponents();
-    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -99,7 +136,9 @@ public class receipts extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+ servicemasterlist sm = new servicemasterlist();
+    sm.setVisible(true);
+    this.dispose();        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
