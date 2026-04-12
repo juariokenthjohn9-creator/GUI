@@ -220,51 +220,41 @@ public class transaction extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-          conf c = new conf();
+        conf c = new conf();
 
-    String customer = jTextField2.getText();
-    String barber = jTextField3.getText();
-    String amount = jTextField4.getText();
-    String paymentDate = jTextField5.getText();
-    String paymentMethod = jTextField6.getText();
-    String status = jTextField7.getText();
-    String service = jTextField1.getText();
+if(transactionId == 0){
+    // ADD
+    String sql = "INSERT INTO transactions (customer, barber, amount, payment_date, payment_method, status, service) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    
+    c.addRecord(sql,
+        jTextField2.getText(), // customer
+        jTextField3.getText(), // barber
+        jTextField4.getText(), // amount
+        jTextField5.getText(), // date
+        jTextField6.getText(), // method
+        jTextField7.getText(), // status
+        jTextField1.getText()  // service
+    );
 
-    if(customer.isEmpty() || barber.isEmpty() || amount.isEmpty()){
-        JOptionPane.showMessageDialog(null, "All required fields must be filled!");
-    } else {
-        String sql = "INSERT INTO transactions (customer, barber, amount, payment_date, payment_method, status, service) "
-                   + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+    JOptionPane.showMessageDialog(null, "Added successfully!");
 
-        try {
-            c.addRecord(sql,
-                customer,
-                barber,
-                Double.parseDouble(amount),
-                paymentDate,
-                paymentMethod,
-                status,
-                service
-            );
+}else{
+    // UPDATE
+    String sql = "UPDATE transactions SET customer=?, barber=?, amount=?, payment_date=?, payment_method=?, status=?, service=? WHERE id=?";
+    
+    c.updateRecord(sql,
+        jTextField2.getText(),
+        jTextField3.getText(),
+        jTextField4.getText(),
+        jTextField5.getText(),
+        jTextField6.getText(),
+        jTextField7.getText(),
+        jTextField1.getText(),
+        transactionId
+    );
 
-            JOptionPane.showMessageDialog(null, "Transaction Saved Successfully!");
-admindashboard dash = new admindashboard();
-dash.setVisible(true);
-dash.loadTransactions(); // refresh table
-this.dispose();
-            // clear fields
-            jTextField1.setText("");
-            jTextField2.setText("");
-            jTextField3.setText("");
-            jTextField4.setText("");
-            jTextField5.setText("");
-            jTextField6.setText("");
-            jTextField7.setText("");
-
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Amount must be a number!");
-        }
-    }
+    JOptionPane.showMessageDialog(null, "Updated successfully!");
+}
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed

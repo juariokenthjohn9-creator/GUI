@@ -73,6 +73,7 @@ public class admindashboard extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jToggleButton1 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -226,7 +227,7 @@ public class admindashboard extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable1);
 
-        maindesktop.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 650, 320));
+        maindesktop.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 650, 310));
 
         jButton3.setBackground(new java.awt.Color(153, 153, 153));
         jButton3.setText("DELETE");
@@ -244,7 +245,7 @@ public class admindashboard extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        maindesktop.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+        maindesktop.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, 30));
 
         jButton5.setBackground(new java.awt.Color(153, 153, 153));
         jButton5.setText("LOGOUT");
@@ -254,6 +255,14 @@ public class admindashboard extends javax.swing.JFrame {
             }
         });
         maindesktop.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, -1, 40));
+
+        jToggleButton1.setText("LOGS");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+        maindesktop.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 70, 30));
 
         jPanel2.add(maindesktop);
         maindesktop.setBounds(0, 60, 740, 410);
@@ -442,6 +451,12 @@ this.dispose();
     this.dispose();
     }//GEN-LAST:event_dashpanelMouseClicked
 
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        logs lg = new logs(); // open logs page
+    lg.setVisible(true);
+    this.dispose(); // close current dashboard
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
     /**
      */
     public void loadTransactions() {
@@ -503,6 +518,7 @@ this.dispose();
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JDesktopPane maindesktop;
     private javax.swing.JLabel name;
     private javax.swing.JPanel transactionpanel;

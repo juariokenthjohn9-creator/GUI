@@ -7,6 +7,7 @@ package masterlist;
 
 import admin.masterlist;
 import admin.admindashboard;
+import static com.sun.xml.internal.fastinfoset.alphabet.BuiltInRestrictedAlphabets.table;
 import config.conf;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
@@ -70,6 +71,7 @@ public void loadData() {
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,7 +88,7 @@ public void loadData() {
         ));
         jScrollPane2.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 620, 320));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 620, 310));
 
         jButton1.setBackground(new java.awt.Color(153, 153, 153));
         jButton1.setText("service name");
@@ -95,7 +97,7 @@ public void loadData() {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 140, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 140, -1));
 
         jButton2.setBackground(new java.awt.Color(153, 153, 153));
         jButton2.setText("add");
@@ -131,14 +133,16 @@ public void loadData() {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 63, 60, 30));
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, 150, 20));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, 150, 30));
+
+        jLabel1.setBackground(new java.awt.Color(153, 153, 153));
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 640, 440));
 
         jButton6.setText("RECIEPTS");
@@ -148,6 +152,21 @@ public void loadData() {
             }
         });
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, 40));
+
+        jPanel2.setBackground(new java.awt.Color(153, 153, 153));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 740, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,49 +197,18 @@ public void loadData() {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
          int row = jTable1.getSelectedRow();
 
-    if(row < 0){
-        JOptionPane.showMessageDialog(null, "Please select a service to edit!");
+    if(row == -1){
+        JOptionPane.showMessageDialog(this, "Please select a service to edit!");
         return;
     }
 
-    try{
-        int id = Integer.parseInt(jTable1.getValueAt(row, 0).toString());
-        String service = jTable1.getValueAt(row, 1).toString();
-        String price = jTable1.getValueAt(row, 2).toString();
-        String description = jTable1.getValueAt(row, 3).toString();
+    int id = Integer.parseInt(jTable1.getValueAt(row, 0).toString());
+    String service = jTable1.getValueAt(row, 1).toString();
+    String price = jTable1.getValueAt(row, 2).toString();
+    String description = jTable1.getValueAt(row, 3).toString();
 
-        String newService = JOptionPane.showInputDialog("Edit Service Name:", service);
-        String newPrice = JOptionPane.showInputDialog("Edit Price:", price);
-        String newDesc = JOptionPane.showInputDialog("Edit Description:", description);
-
-        if(newService == null || newPrice == null || newDesc == null){
-            return;
-        }
-
-        double priceValue = Double.parseDouble(newPrice);
-
-        config.conf c = new config.conf();
-        java.sql.Connection conn = c.getConnection();
-
-        String sql = "UPDATE services SET service_name=?, price=?, description=? WHERE id=?";
-        java.sql.PreparedStatement ps = conn.prepareStatement(sql);
-
-        ps.setString(1, newService);
-        ps.setDouble(2, priceValue);
-        ps.setString(3, newDesc);
-        ps.setInt(4, id);
-
-        ps.executeUpdate();
-
-        JOptionPane.showMessageDialog(null, "Service Updated Successfully!");
-        loadData();
-
-        ps.close();
-        conn.close();
-
-    } catch(Exception e){
-        JOptionPane.showMessageDialog(null, "Edit Failed: " + e.getMessage());
-    }
+    masterlist m = new masterlist(this, id, service, price, description);
+    m.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -360,6 +348,7 @@ public void loadData() {
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;

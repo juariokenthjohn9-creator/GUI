@@ -26,6 +26,7 @@ public class masterlist extends javax.swing.JFrame {
     initComponents();
 }
 
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,11 +37,9 @@ public class masterlist extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
@@ -54,10 +53,6 @@ public class masterlist extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("ID:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, -1, -1));
-
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("SERVICE NAME: ");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, -1, -1));
@@ -70,19 +65,12 @@ public class masterlist extends javax.swing.JFrame {
         jLabel5.setText("DISCRIPTION:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, -1, 30));
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 190, -1));
-
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 190, 20));
+        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 190, 30));
 
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,10 +137,6 @@ public class masterlist extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
@@ -166,45 +150,45 @@ public class masterlist extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-              try {
-        String service = jTextField3.getText();
-        String price = jTextField4.getText();
-        String description = jTextField5.getText();
+             try {
 
-        if(service.isEmpty() || price.isEmpty()){
-            JOptionPane.showMessageDialog(this, "Fill all required fields!");
-            return;
-        }
+    String service = jTextField3.getText();
+    String price = jTextField4.getText();
+    String description = jTextField5.getText();
 
-        config.conf c = new config.conf();
+    if(service.isEmpty() || price.isEmpty()){
+        JOptionPane.showMessageDialog(this, "Fill all required fields!");
+        return;
+    }
 
-        // SAVE SERVICE
+    config.conf c = new config.conf();
+
+    if(serviceId == 0){
+        
+        // ADD SERVICE
         String sql = "INSERT INTO services (service_name, price, description) VALUES (?, ?, ?)";
         c.addRecord(sql, service, Double.parseDouble(price), description);
 
-        // SAVE LOG
-        String logsql = "INSERT INTO logs (action, user, date) VALUES (?, ?, datetime('now'))";
-        c.addRecord(logsql, "Added Service", "Admin");
-
-        // SAVE RECEIPT
-        String receiptSql = "INSERT INTO receipts (customer_name, service_name, price, date) VALUES (?, ?, ?, datetime('now'))";
-        c.addRecord(receiptSql, "Walk-in Customer", service, Double.parseDouble(price));
-
-        // SAVE CERTIFICATE
-        String certSql = "INSERT INTO certificates (customer_name, service_name, issued_date) VALUES (?, ?, datetime('now'))";
-        c.addRecord(certSql, "Walk-in Customer", service);
-
         JOptionPane.showMessageDialog(this, "Service Added!");
 
-        if(parentForm != null){
-            parentForm.loadData();
-        }
+    }else{
+        
+        // UPDATE SERVICE
+        String sql = "UPDATE services SET service_name=?, price=?, description=? WHERE id=?";
+        c.addRecord(sql, service, Double.parseDouble(price), description, serviceId);
 
-        this.dispose();
-
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, e.getMessage());
+        JOptionPane.showMessageDialog(this, "Service Updated!");
     }
+
+    if(parentForm != null){
+        parentForm.loadData();
+    }
+
+    this.dispose();
+
+}catch(Exception e){
+    JOptionPane.showMessageDialog(this, e.getMessage());
+}
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -251,17 +235,29 @@ public class masterlist extends javax.swing.JFrame {
         });
     }
 
+    int serviceId = 0;
+
+public masterlist(servicemasterlist parent, int id, String service, String price, String description) {
+
+    this.parentForm = parent;
+    initComponents();
+
+    serviceId = id;   // ✅ ito ang tamang assignment
+
+    jTextField3.setText(service);
+    jTextField4.setText(price);
+    jTextField5.setText(description);
+}
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;

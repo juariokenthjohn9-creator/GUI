@@ -202,7 +202,20 @@ public void deleteRecord(String sql) {
     }
 }
 
-  
+  public void insertLog(String action, String user) {
+    String sql = "INSERT INTO logs(action, user, date) VALUES (?, ?, datetime('now'))";
+
+    try (Connection conn = connectDB();
+         PreparedStatement pst = conn.prepareStatement(sql)) {
+
+        pst.setString(1, action);
+        pst.setString(2, user);
+        pst.executeUpdate();
+
+    } catch (Exception e) {
+        System.out.println("Log Error: " + e.getMessage());
+    }
+}
 
     
   
