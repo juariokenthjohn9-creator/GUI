@@ -48,7 +48,6 @@ public final class userstable extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         headeruser = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -77,13 +76,10 @@ public final class userstable extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("USERS");
-        headeruser.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 360, 30));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Pictures\\final logo.jpg")); // NOI18N
-        headeruser.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 720, 90));
+        headeruser.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 360, 30));
 
         getContentPane().add(headeruser);
-        headeruser.setBounds(0, 0, 720, 90);
+        headeruser.setBounds(0, 0, 720, 70);
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -146,7 +142,7 @@ public final class userstable extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(usertable);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 580, 210));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 580, 230));
 
         jButton1.setBackground(new java.awt.Color(153, 153, 153));
         jButton1.setText("BACK");
@@ -167,7 +163,7 @@ public final class userstable extends javax.swing.JFrame {
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 90, 40));
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 90, 720, 330);
+        jPanel1.setBounds(0, 70, 720, 350);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -324,7 +320,6 @@ if (confirm == JOptionPane.YES_OPTION) {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
